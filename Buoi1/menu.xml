@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <dish id="M01" status="Còn hàng">
+        <name>Gỏi cuốn</name>
+        <category>Khai vị</category>
+        <price unit="VND">35000</price>
+        <description>Gỏi cuốn tươi ngon với tôm, thịt, bún à ru sống.</description>
+    </dish>
+    
+    <dish id="M02" status="Còn hàng">
+        <name>Bún riêu</name>
+        <category>Món chính</category>
+        <price unit="VND">40000</price>
+        <description>Bún riêu nóng hổi với nước dùng đậm đà, riêu cua, đậu hủ và rau sống.</description>
+    </dish>
+
+    <dish id="M03" status="Còn hàng">
+        <name>Lẩu hải sản chua cay</name>
+        <category>Món chính</category>
+        <price unit="VND">250000</price>
+        <description>Lẩu đậm đà vị Thái, ăn kèm tôm, mực, nghêu và các loại rau sống.</description>
+    </dish>
+
+    <dish id="M04" status="Hết hàng">
+        <name>Cơm tấm sườn</name>
+        <category>Món chính</category>
+        <price unit="VND">55000</price>
+        <description>Cơm tấm ăn kèm sườn nướng thơm ngon, dưa chua và nước mắm.</description>
+    </dish>
+
+    <dish id="M05" status="Còn hàng">
+        <name>Chè đậu đỏ</name>
+        <category>Tráng miệng</category>
+        <price unit="VND">30000</price>
+        <description>Chè đậu đỏ ngọt thanh, thơm béo, dùng kèm nước cốt dừa.</description>
+    </dish>
+</menu>
