@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật giảng viên</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #2196F3;
+            color: white;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        .updated {
+            background-color: #fff3cd;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cập nhật đơn vị giảng viên</h2>
+    <h3>Đã cập nhật đơn vị của “Phạm Thanh Loan” thành “Cơ bản”</h3>
+
+    <table id="bangGiangVien">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên giảng viên</th>
+                <th>Ngành</th>
+                <th>Đơn vị</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "hosogiangvien.xml", true);
+        xhr.overrideMimeType("text/xml");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0)) {
+                var xmlDoc = xhr.responseXML;
+
+                if (!xmlDoc) {
+                    alert("Không đọc được file hosogiangvien.xml!");
+                    return;
+                }
+
+                var list = xmlDoc.getElementsByTagName("giangvien");
+                var tbody = document.querySelector("#bangGiangVien tbody");
+
+                for (var i = 0; i < list.length; i++) {
+                    var hotenNode = list[i].getElementsByTagName("hoten")[0];
+                    var nganhNode = list[i].getElementsByTagName("nganh")[0];
+                    var donviNode = list[i].getElementsByTagName("donvi")[0];
+
+                    var hoten = hotenNode.textContent.trim();
+                    var nganh = nganhNode.textContent.trim();
+                    var donvi = donviNode.textContent.trim();
+
+                    // Cập nhật đơn vị nếu là Phạm Thanh Loan
+                    if (hoten === "Phạm Thanh Loan") {
+                        donviNode.textContent = "Cơ bản";   // thay đổi trong bộ nhớ
+                        donvi = "Cơ bản";
+                    }
+
+                    var row = document.createElement("tr");
+                    if (hoten === "Phạm Thanh Loan") {
+                        row.className = "updated";          // tô màu dòng đã cập nhật
+                    }
+
+                    row.innerHTML = `
+                        <td>${i + 1}</td>
+                        <td>${hoten}</td>
+                        <td>${nganh}</td>
+                        <td>${donvi}</td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

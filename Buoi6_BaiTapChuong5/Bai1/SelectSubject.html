@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Môn học NXB Minh Khai</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Các môn học của Nhà xuất bản Minh Khai</h2>
+    <table id="bangMonHoc">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên môn học</th>
+                <th>Nhà xuất bản</th>
+                <th>Tác giả</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "dsmonhoc.xml", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var xmlDoc = xhr.responseXML;
+                var subjects = xmlDoc.getElementsByTagName("subject");
+                var tbody = document.querySelector("#bangMonHoc tbody");
+                var stt = 1;
+
+                for (var i = 0; i < subjects.length; i++) {
+                    var publisher = subjects[i].getElementsByTagName("publisher")[0].textContent.trim();
+                    
+                    // Chỉ lấy những môn học có publisher là "Minh Khai"
+                    if (publisher === "Minh Khai") {
+                        var title = subjects[i].getElementsByTagName("title")[0].textContent;
+                        var author = subjects[i].getElementsByTagName("author")[0].textContent;
+
+                        var row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${stt}</td>
+                            <td>${title}</td>
+                            <td>${publisher}</td>
+                            <td>${author}</td>
+                        `;
+                        tbody.appendChild(row);
+                        stt++;
+                    }
+                }
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

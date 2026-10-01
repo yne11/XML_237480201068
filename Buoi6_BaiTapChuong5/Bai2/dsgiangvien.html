@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách giảng viên</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hồ sơ giảng viên</h2>
+
+    <table id="bangGiangVien">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên giảng viên</th>
+                <th>Ngành</th>
+                <th>Đơn vị</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "hosogiangvien.xml", true);
+        xhr.overrideMimeType("text/xml");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0)) {
+                var xmlDoc = xhr.responseXML;
+
+                if (!xmlDoc) {
+                    alert("Không đọc được file hosogiangvien.xml!\nHãy chạy bằng Live Server hoặc python -m http.server");
+                    return;
+                }
+
+                var list = xmlDoc.getElementsByTagName("giangvien");
+                var tbody = document.querySelector("#bangGiangVien tbody");
+
+                for (var i = 0; i < list.length; i++) {
+                    var hoten = list[i].getElementsByTagName("hoten")[0].textContent.trim();
+                    var nganh = list[i].getElementsByTagName("nganh")[0].textContent.trim();
+                    var donvi = list[i].getElementsByTagName("donvi")[0].textContent.trim();
+
+                    var row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${i + 1}</td>
+                        <td>${hoten}</td>
+                        <td>${nganh}</td>
+                        <td>${donvi}</td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
