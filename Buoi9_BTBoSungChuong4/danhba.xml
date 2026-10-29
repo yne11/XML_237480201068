@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<danhba>
+    <lienhe id="LH001">
+        <hoten>Nguyễn Hoàng Nam</hoten>
+        <sdt>0987654321</sdt>
+        <email>nam.nguyen@example.com</email>
+        <nhom>Bạn bè</nhom>
+    </lienhe>
+    <lienhe id="LH002">
+        <hoten>Trần Ngọc Ánh</hoten>
+        <sdt>0976543210</sdt>
+        <email>anh.tran@example.com</email>
+        <nhom>Gia đình</nhom>
+    </lienhe>
+    <lienhe id="LH003">
+        <hoten>Lê Quốc Huy</hoten>
+        <sdt>0965432109</sdt>
+        <email>huy.le@example.com</email>
+        <nhom>Công việc</nhom>
+    </lienhe>
+    <lienhe id="LH004">
+        <hoten>Phạm Minh Thư</hoten>
+        <sdt>0954321098</sdt>
+        <email>thu.pham@example.com</email>
+        <nhom>Bạn bè</nhom>
+    </lienhe>
+    <lienhe id="LH005">
+        <hoten>Hoàng Gia Bảo</hoten>
+        <sdt>0943210987</sdt>
+        <email>bao.hoang@example.com</email>
+        <nhom>Khác</nhom>
+    </lienhe>
+    <lienhe id="LH006">
+        <hoten>Võ Thùy Dương</hoten>
+        <sdt>0932109876</sdt>
+        <email>duong.vo@example.com</email>
+        <nhom>Gia đình</nhom>
+    </lienhe>
+    <lienhe id="LH007">
+        <hoten>Đặng Minh Khang</hoten>
+        <sdt>0921098765</sdt>
+        <email>khang.dang@example.com</email>
+        <nhom>Công việc</nhom>
+    </lienhe>
+    <lienhe id="LH008">
+        <hoten>Bùi Khánh Linh</hoten>
+        <sdt>0910987654</sdt>
+        <email>linh.bui@example.com</email>
+        <nhom>Bạn bè</nhom>
+    </lienhe>
+</danhba>
